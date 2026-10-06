@@ -203,8 +203,6 @@ export const commands: CommandsSubgroup = {
       "capsLockWarning",
       "showAverage",
       "showPb",
-      "monkeyPowerLevel",
-      "monkey",
     ),
 
     //danger zone
@@ -340,14 +338,6 @@ export const commands: CommandsSubgroup = {
               `<p style="margin-top:1rem;font-size:1.5rem;">If your skill issue is not fixed yet, please wait a bit longer...</p>`,
             );
         }, 5000);
-      },
-    },
-    {
-      id: "joinDiscord",
-      display: "Join the Discord server",
-      icon: "fa-users",
-      exec: (): void => {
-        window.open("https://discord.gg/monkeytype");
       },
     },
     {
