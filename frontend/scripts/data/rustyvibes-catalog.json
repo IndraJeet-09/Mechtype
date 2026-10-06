@@ -6,6 +6,7 @@
       "name": "Cherry MX Black",
       "variant": "ABS",
       "category": "linear",
+      "description": "Heavy, smooth, low",
       "color": "#2C2C30",
       "credit": "Mechvibes by Hai Nguyen · MIT License",
       "source": { "kind": "mechvibes", "dir": "mechvibes/cherrymx-black-abs" }
@@ -15,6 +16,7 @@
       "name": "Cherry MX Black",
       "variant": "PBT",
       "category": "linear",
+      "description": "Heavy, smooth, deeper",
       "color": "#2C2C30",
       "credit": "Mechvibes by Hai Nguyen · MIT License",
       "source": { "kind": "mechvibes", "dir": "mechvibes/cherrymx-black-pbt" }
@@ -24,6 +26,7 @@
       "name": "Cherry MX Red",
       "variant": "ABS",
       "category": "linear",
+      "description": "Light and quick",
       "color": "#D7263D",
       "credit": "Mechvibes by Hai Nguyen · MIT License",
       "source": { "kind": "mechvibes", "dir": "mechvibes/cherrymx-red-abs" }
@@ -33,6 +36,7 @@
       "name": "Cherry MX Red",
       "variant": "PBT",
       "category": "linear",
+      "description": "Light, quick, rounder",
       "color": "#D7263D",
       "credit": "Mechvibes by Hai Nguyen · MIT License",
       "source": { "kind": "mechvibes", "dir": "mechvibes/cherrymx-red-pbt" }
@@ -41,6 +45,7 @@
       "id": "gateron-black-ink",
       "name": "Gateron Black Ink",
       "category": "linear",
+      "description": "Deep and silky",
       "color": "#3A3F4A",
       "credit": "kbsim by Thomas Lai · MIT License",
       "source": { "kind": "kbsim", "dir": "kbsim/blackink" }
@@ -49,6 +54,7 @@
       "id": "gateron-red-ink",
       "name": "Gateron Red Ink",
       "category": "linear",
+      "description": "Bright and silky",
       "color": "#B3203B",
       "credit": "kbsim by Thomas Lai · MIT License",
       "source": { "kind": "kbsim", "dir": "kbsim/redink" }
@@ -57,6 +63,7 @@
       "id": "novelkeys-cream",
       "name": "NovelKeys Cream",
       "category": "linear",
+      "description": "Warm and marbly",
       "color": "#EBD9B4",
       "credit": "kbsim by Thomas Lai · MIT License",
       "source": { "kind": "kbsim", "dir": "kbsim/cream" }
@@ -65,6 +72,7 @@
       "id": "alpaca",
       "name": "Alpaca",
       "category": "linear",
+      "description": "Soft and poppy",
       "color": "#F2A7C3",
       "credit": "kbsim by Thomas Lai · MIT License",
       "source": { "kind": "kbsim", "dir": "kbsim/alpaca" }
@@ -73,6 +81,7 @@
       "id": "turquoise-tealios",
       "name": "Turquoise Tealios",
       "category": "linear",
+      "description": "Clean and even",
       "color": "#2EC4B6",
       "credit": "kbsim by Thomas Lai · MIT License",
       "source": { "kind": "kbsim", "dir": "kbsim/turquoise" }
@@ -82,6 +91,7 @@
       "name": "Cherry MX Brown",
       "variant": "ABS",
       "category": "tactile",
+      "description": "A gentle bump",
       "color": "#8B5A2B",
       "credit": "Mechvibes by Hai Nguyen · MIT License",
       "source": { "kind": "mechvibes", "dir": "mechvibes/cherrymx-brown-abs" }
@@ -91,6 +101,7 @@
       "name": "Cherry MX Brown",
       "variant": "PBT",
       "category": "tactile",
+      "description": "A gentle bump, fuller",
       "color": "#8B5A2B",
       "credit": "Mechvibes by Hai Nguyen · MIT License",
       "source": { "kind": "mechvibes", "dir": "mechvibes/cherrymx-brown-pbt" }
@@ -99,6 +110,7 @@
       "id": "holy-panda",
       "name": "Holy Panda",
       "category": "tactile",
+      "description": "Rounded thock",
       "color": "#E9A23B",
       "credit": "kbsim by Thomas Lai · MIT License",
       "source": { "kind": "kbsim", "dir": "kbsim/holypanda" }
@@ -107,6 +119,7 @@
       "id": "topre",
       "name": "Topre",
       "category": "tactile",
+      "description": "Cushioned thock",
       "color": "#8E8E93",
       "credit": "kbsim by Thomas Lai · MIT License",
       "source": { "kind": "kbsim", "dir": "kbsim/topre" }
@@ -116,6 +129,7 @@
       "name": "Topre Purple Hybrid",
       "variant": "PBT",
       "category": "tactile",
+      "description": "Deep, damped thock",
       "color": "#7E57C2",
       "credit": "Mechvibes by Hai Nguyen · MIT License",
       "source": {
@@ -127,6 +141,7 @@
       "id": "everglide-crystal-purple",
       "name": "Everglide Crystal Purple",
       "category": "tactile",
+      "description": "Bright and snappy",
       "color": "#A77BF3",
       "credit": "Mechvibes by Hai Nguyen · MIT License",
       "source": { "kind": "mechvibes", "dir": "mechvibes/eg-crystal-purple" }
@@ -135,6 +150,7 @@
       "id": "everglide-oreo",
       "name": "Everglide Oreo",
       "category": "tactile",
+      "description": "Punchy and dense",
       "color": "#3B3B3B",
       "credit": "Mechvibes by Hai Nguyen · MIT License",
       "source": { "kind": "mechvibes", "dir": "mechvibes/eg-oreo" }
@@ -144,6 +160,7 @@
       "name": "Cherry MX Blue",
       "variant": "ABS",
       "category": "clicky",
+      "description": "Crisp, loud click",
       "color": "#1F6FEB",
       "credit": "Mechvibes by Hai Nguyen · MIT License",
       "source": { "kind": "mechvibes", "dir": "mechvibes/cherrymx-blue-abs" }
@@ -153,6 +170,7 @@
       "name": "Cherry MX Blue",
       "variant": "PBT",
       "category": "clicky",
+      "description": "Crisp click, fuller",
       "color": "#1F6FEB",
       "credit": "Mechvibes by Hai Nguyen · MIT License",
       "source": { "kind": "mechvibes", "dir": "mechvibes/cherrymx-blue-pbt" }
@@ -161,6 +179,7 @@
       "id": "kailh-box-navy",
       "name": "Kailh Box Navy",
       "category": "clicky",
+      "description": "Heavy, sharp click",
       "color": "#1B2F5E",
       "credit": "kbsim by Thomas Lai · MIT License",
       "source": { "kind": "kbsim", "dir": "kbsim/boxnavy" }
@@ -169,6 +188,7 @@
       "id": "skcm-blue-alps",
       "name": "SKCM Blue Alps",
       "category": "clicky",
+      "description": "Crisp, hollow click",
       "color": "#5AA9E6",
       "credit": "kbsim by Thomas Lai · MIT License",
       "source": { "kind": "kbsim", "dir": "kbsim/bluealps" }
@@ -177,6 +197,7 @@
       "id": "buckling-spring",
       "name": "Buckling Spring",
       "category": "clicky",
+      "description": "Loud, springy clack",
       "color": "#CFC6B4",
       "credit": "kbsim by Thomas Lai · MIT License",
       "source": { "kind": "kbsim", "dir": "kbsim/buckling" }
