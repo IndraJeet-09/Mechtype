@@ -13,6 +13,8 @@
   --color-colorful-error: var(--colorful-error-color);
   --color-colorful-error-extra: var(--colorful-error-extra-color);
 
+  --font-display: "Lexend Deca", ui-sans-serif, system-ui, sans-serif;
+
   /* decide on rem or em */
   --spacing: 0.25rem;
   --em-spacing: 0.25em;
