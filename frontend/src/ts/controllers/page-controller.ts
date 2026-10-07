@@ -81,7 +81,6 @@ const pages = {
       }, 250);
     },
   }),
-  about: solidPage("about"),
   account: solidPage("account", {
     loadingOptions: {
       loadingMode: () => {
@@ -184,7 +183,7 @@ function updateTitle(nextPage: { id: string; display?: string }): void {
   } else {
     const titleString =
       nextPage.display ?? Strings.capitalizeFirstLetterOfEachWord(nextPage.id);
-    Misc.updateTitle(`${titleString} | Monkeytype`);
+    Misc.updateTitle(`${titleString} | MechType`);
   }
 }
 
