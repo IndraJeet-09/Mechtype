@@ -8,11 +8,10 @@ import { Theme } from "./core/Theme";
 import { DevTools } from "./dev/DevTools";
 import { CommandlineHotkey } from "./hotkeys/CommandlineHotkey";
 import { Footer } from "./layout/footer/Footer";
-import { Header } from "./layout/header/Header";
+import { Logo } from "./layout/header/Logo";
 import { Overlays } from "./layout/overlays/Overlays";
 import { Modals } from "./modals/Modals";
 import { NotFoundPage } from "./pages/404Page";
-import { AboutPage } from "./pages/AboutPage";
 import { AccountSettingsPage } from "./pages/account-settings/AccountSettingsPage";
 import { AccountPage } from "./pages/account/AccountPage";
 import { MyProfile } from "./pages/account/MyProfile";
@@ -32,15 +31,14 @@ import { LiveStatsMini } from "./pages/test/live-stats/LiveStatsMini";
 import { LiveStatsTextBottom } from "./pages/test/live-stats/LiveStatsTextBottom";
 import { LiveStatsTextTop } from "./pages/test/live-stats/LiveStatsTextTop";
 import { TestModesNotice } from "./pages/test/modes-notice/TestModesNotice";
-import { Monkey } from "./pages/test/Monkey";
 import { OutOfFocusWarning } from "./pages/test/OutOfFocusWarning";
 import { Premid } from "./pages/test/Premid";
 import { TestConfig } from "./pages/test/TestConfig";
 import { Popups } from "./popups/Popups";
 
 const components: Record<string, () => JSXElement> = {
+  branding: () => <Logo />,
   footer: () => <Footer />,
-  aboutpage: () => <AboutPage />,
   settingspage: () => <SettingsPage />,
   accountpage: () => <AccountPage />,
   loadingpage: () => <LoadingPage />,
@@ -53,7 +51,6 @@ const components: Record<string, () => JSXElement> = {
   popups: () => <Popups />,
   overlays: () => <Overlays />,
   theme: () => <Theme />,
-  header: () => <Header />,
   devtools: () => <DevTools />,
   testconfig: () => <TestConfig />,
   commandlinehotkey: () => <CommandlineHotkey />,
@@ -65,7 +62,6 @@ const components: Record<string, () => JSXElement> = {
   accountsettingspage: () => <AccountSettingsPage />,
   keyboardselector: () => <KeyboardSoundSelector />,
   keymap: () => <Keymap />,
-  monkey: () => <Monkey />,
   outoffocuswarning: () => <OutOfFocusWarning />,
   livestatsmini: () => <LiveStatsMini />,
   livestatstexttop: () => <LiveStatsTextTop />,
