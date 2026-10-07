@@ -45,9 +45,10 @@
 }
 
 #app {
-  min-height: 100vh;
   grid-template-rows: [top-start] auto [content-start] 1fr [content-end] auto [top-end];
-  overflow: hidden;
+  // clip instead of hidden: hidden would make #app a scroll container and
+  // break `position: sticky` descendants (they would stick to #app, not the viewport)
+  overflow: clip;
   row-gap: 2rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -167,26 +168,15 @@ a[router-link] * {
 body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
   font-family: var(--font);
   color: var(--text-color);
-  overflow-x: hidden;
+  // clip (not hidden) so body never becomes a scroll container
+  overflow-x: clip;
   background: var(--bg-color);
 }
 
 .customBackground {
-  content: "";
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
-  background-position: center center;
-  background-repeat: no-repeat;
-  z-index: -999;
-  justify-content: center;
-  align-items: center;
-  display: flex;
+  display: none !important;
 }
 
 kbd {
@@ -399,5 +389,29 @@ table {
     cursor: pointer;
     user-select: none;
     background-color: var(--sub-alt-color);
+  }
+}
+
+// scroll reveal, driven by a one shot class swap (see KeyboardSoundSelector).
+// `backwards` (not `both`) so the finished animation stops overriding normal
+// author styles like hover transforms.
+.mt-reveal {
+  animation: mtRevealUp 450ms ease-out backwards;
+}
+
+@keyframes mtRevealUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mt-reveal {
+    animation: none;
   }
 }
