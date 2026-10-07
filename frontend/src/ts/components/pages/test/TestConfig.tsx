@@ -36,8 +36,8 @@ export function TestConfig(): JSXElement {
       <div
         class={cn(
           variables,
-          "group relative mb-8 hidden w-max grid-cols-[1fr_auto_1fr] justify-center place-self-center [font-size:var(--font-size)] md:grid",
-          "mx-auto transition-opacity duration-125",
+          "group sticky top-2 z-10 mb-8 hidden w-max grid-cols-[1fr_auto_1fr] justify-center place-self-center [font-size:var(--font-size)] md:grid",
+          "mx-auto rounded-[var(--roundness)] border border-text/10 bg-bg/95 px-4 py-3 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] backdrop-blur-md transition-opacity duration-125",
           getFocus() || getResultVisible()
             ? "pointer-events-none opacity-0"
             : "",
@@ -50,7 +50,7 @@ export function TestConfig(): JSXElement {
       </div>
       <Button
         class={cn(
-          "mx-auto flex place-self-center px-4 py-2 text-sub md:hidden",
+          "sticky top-2 z-10 mx-auto mb-8 flex w-max rounded-full border border-text/10 px-4 py-2 font-semibold text-sub shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] md:hidden",
         )}
         variant="button"
         onClick={() => {
@@ -76,7 +76,7 @@ function TCButton(props: {
   return (
     <Button
       variant="text"
-      class={cn(buttonClass, props.class)}
+      class={cn(buttonClass, props.active && "font-semibold", props.class)}
       fa={props.fa ? { ...props.fa, fixedWidth: true } : undefined}
       text={props.text}
       active={props.active}
