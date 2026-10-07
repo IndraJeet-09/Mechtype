@@ -1,9 +1,9 @@
 import { Config, CustomThemeColors } from "@monkeytype/schemas/configs";
 
 const obj: Config = {
-  theme: "serika_dark",
+  theme: "mechtype",
   themeLight: "serika",
-  themeDark: "serika_dark",
+  themeDark: "mechtype",
   autoSwitchTheme: false,
   customTheme: false,
   customThemeColors: [
