@@ -1182,6 +1182,18 @@ export const themes: Record<ThemeName, Theme> = {
     colorfulError: "#da3333",
     colorfulErrorExtra: "#791717",
   },
+  mechtype: {
+    bg: "#0b0b0c",
+    caret: "#ff6a2b",
+    main: "#ff6a2b",
+    sub: "#7d7e85",
+    subAlt: "#151517",
+    text: "#e8e8ea",
+    error: "#e5484d",
+    errorExtra: "#8f1d22",
+    colorfulError: "#e5484d",
+    colorfulErrorExtra: "#8f1d22",
+  },
   menthol: {
     bg: "#00c18c",
     caret: "#99fdd8",
