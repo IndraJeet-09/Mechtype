@@ -1,4 +1,5 @@
 import { createResource, createSignal, JSXElement, Show } from "solid-js";
+import { envConfig } from "virtual:env-config";
 import { z } from "zod";
 
 import { resetConfig } from "../../../config/lifecycle";
@@ -283,7 +284,7 @@ function AccountSettingsNotice(): JSXElement {
     fallback: false,
   });
   return (
-    <Show when={!dismissed()}>
+    <Show when={!dismissed() && envConfig.backendEnabled}>
       <div
         class={cn(
           "grid grid-cols-[auto_1fr] items-center gap-4 rounded px-4 py-4 ring-4 ring-sub-alt md:grid-cols-[auto_1fr_auto] md:gap-8",
