@@ -40,7 +40,7 @@ export function Overlays(): JSXElement {
       <MediaQueryDebugger />
       <LoaderBar />
       <FpsCounter />
-      <Show when={isDevEnvironment()}>
+      <Show when={isDevEnvironment() && envConfig.backendEnabled}>
         <DevButtons />
       </Show>
     </>
