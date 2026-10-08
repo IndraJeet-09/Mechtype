@@ -8,10 +8,11 @@ import { Theme } from "./core/Theme";
 import { DevTools } from "./dev/DevTools";
 import { CommandlineHotkey } from "./hotkeys/CommandlineHotkey";
 import { Footer } from "./layout/footer/Footer";
-import { Logo } from "./layout/header/Logo";
+import { Header } from "./layout/header/Header";
 import { Overlays } from "./layout/overlays/Overlays";
 import { Modals } from "./modals/Modals";
 import { NotFoundPage } from "./pages/404Page";
+import { AboutPage } from "./pages/AboutPage";
 import { AccountSettingsPage } from "./pages/account-settings/AccountSettingsPage";
 import { AccountPage } from "./pages/account/AccountPage";
 import { MyProfile } from "./pages/account/MyProfile";
@@ -33,12 +34,14 @@ import { LiveStatsTextTop } from "./pages/test/live-stats/LiveStatsTextTop";
 import { TestModesNotice } from "./pages/test/modes-notice/TestModesNotice";
 import { OutOfFocusWarning } from "./pages/test/OutOfFocusWarning";
 import { Premid } from "./pages/test/Premid";
-import { TestConfig } from "./pages/test/TestConfig";
+import { TestConfigBar } from "./pages/test/TestConfig";
+import { TestConfigMobile } from "./pages/test/TestConfigMobile";
 import { Popups } from "./popups/Popups";
 
 const components: Record<string, () => JSXElement> = {
-  branding: () => <Logo />,
+  header: () => <Header />,
   footer: () => <Footer />,
+  aboutpage: () => <AboutPage />,
   settingspage: () => <SettingsPage />,
   accountpage: () => <AccountPage />,
   loadingpage: () => <LoadingPage />,
@@ -52,7 +55,8 @@ const components: Record<string, () => JSXElement> = {
   overlays: () => <Overlays />,
   theme: () => <Theme />,
   devtools: () => <DevTools />,
-  testconfig: () => <TestConfig />,
+  testconfigbar: () => <TestConfigBar />,
+  testconfigmobile: () => <TestConfigMobile />,
   commandlinehotkey: () => <CommandlineHotkey />,
   testmodesnotice: () => <TestModesNotice />,
   capswarning: () => <CapsWarning />,
