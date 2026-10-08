@@ -102,7 +102,7 @@ export function KeyboardSoundSelector(): JSXElement {
       aria-labelledby="keyboardSoundTitle"
       data-ui-element="keyboardSoundSelector"
       class={cn(
-        "relative w-full overflow-hidden border-t border-text/10 bg-sub-alt/40 transition-opacity duration-125",
+        "relative w-full overflow-hidden bg-sub-alt/40 transition-opacity duration-125",
         getFocus() && "pointer-events-none opacity-0",
       )}
     >
@@ -114,11 +114,11 @@ export function KeyboardSoundSelector(): JSXElement {
             "radial-gradient(60% 100% at 50% 0%, var(--main-color), transparent 70%)",
         }}
       ></div>
-      <div class="relative mx-auto w-full max-w-[100rem] px-8 pt-12 pb-16 md:pt-16 md:pb-20 lg:pt-20">
+      <div class="relative mx-auto flex w-full max-w-[100rem] flex-col items-center justify-center px-8 pt-16 pb-24 md:pt-20 md:pb-28 lg:pt-24">
         <h2
           id="keyboardSoundTitle"
           class={cn(
-            "font-display text-[2.5rem] leading-[1.05] font-bold tracking-tight text-text md:text-[3.5rem] lg:text-[4.5rem]",
+            "text-center font-display text-[2.5rem] leading-[1.05] font-bold tracking-tight text-text md:text-[3.5rem] lg:text-[4.5rem]",
             revealClass(),
           )}
           style={{ "animation-delay": "0ms" }}
@@ -127,7 +127,7 @@ export function KeyboardSoundSelector(): JSXElement {
         </h2>
         <p
           class={cn(
-            "mt-5 max-w-[47.5rem] text-base leading-relaxed text-sub md:text-lg lg:text-xl",
+            "mt-6 max-w-[47.5rem] text-center text-base leading-relaxed text-sub md:text-lg lg:text-xl",
             revealClass(),
           )}
           style={{ "animation-delay": "80ms" }}
@@ -138,7 +138,7 @@ export function KeyboardSoundSelector(): JSXElement {
         </p>
 
         <div
-          class={cn("mt-12 flex justify-start", revealClass())}
+          class={cn("mt-14 flex justify-center", revealClass())}
           style={{ "animation-delay": "160ms" }}
         >
           <div
@@ -181,7 +181,7 @@ export function KeyboardSoundSelector(): JSXElement {
           </div>
         </div>
 
-        <ul class="mt-10 grid grid-cols-1 gap-x-3 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul class="mt-12 grid w-full grid-cols-1 gap-x-3 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
           <For each={visiblePacks()}>
             {(pack, index) => {
               const isSelected = (): boolean => selectedId() === pack.id;
@@ -205,7 +205,7 @@ export function KeyboardSoundSelector(): JSXElement {
                     onPointerEnter={() => prefetchPack(pack.url)}
                     onFocus={() => prefetchPack(pack.url)}
                     class={cn(
-                      "flex w-full cursor-pointer items-center gap-4 rounded-2xl border px-4 py-3.5 pr-14 text-left transition-[background-color,border-color,box-shadow] duration-150 ease-out focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-main motion-reduce:transition-none",
+                      "flex w-full cursor-pointer items-center gap-4 rounded-2xl border px-4 py-4 pr-14 text-left transition-[background-color,border-color,box-shadow] duration-150 ease-out focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-main motion-reduce:transition-none",
                       isSelected()
                         ? "border-main/70 bg-main/10"
                         : "border-text/10 bg-sub-alt hover:border-text/25 hover:bg-text/5 hover:shadow-[0_12px_28px_-14px_rgba(0,0,0,0.8)]",
