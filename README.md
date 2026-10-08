@@ -1,11 +1,12 @@
 # MechType
 
-**MechType — Type with the sound of your favorite mechanical keyboard.**
+**Type with the sound of your favorite mechanical keyboard.**
 
-A typing experience powered by real mechanical keyboard sounds. Pick one of
-twenty-one real switch sound profiles, from the crisp click of Cherry MX Blue to
-the deep thock of Topre, and every keystroke you type plays that keyboard.
+A typing experience built around real switch sound. Pick one of twenty-one
+sound profiles — from the crisp click of Cherry MX Blue to the deep thock of
+Topre — and every keystroke you type plays that keyboard.
 
+[![License: GPL v3](https://img.shields.io/badge/license-GPL--3.0-blue.svg?style=for-the-badge)](./LICENSE)&nbsp;
 [![AnimeJs](https://img.shields.io/badge/Anime.js-ff4b4b?style=for-the-badge&logo=animedotjs&logoColor=white)](https://animejs.com/)&nbsp;
 [![ChartJs](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)](https://www.chartjs.org/)&nbsp;
 [![OXLint](https://img.shields.io/badge/oxlint-2b3c5a?style=for-the-badge&logo=oxc&logoColor=white)](https://oxc.rs/docs/guide/usage/linter.html)&nbsp;
@@ -19,7 +20,7 @@ the deep thock of Topre, and every keystroke you type plays that keyboard.
 [![Vitest](https://img.shields.io/badge/vitest-00FF74?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)&nbsp;
 [![Zod](https://img.shields.io/badge/-Zod-408AFF?style=for-the-badge&logo=zod&logoColor=white)](https://zod.dev/)
 
-# About
+## Overview
 
 MechType is a focused typing test built around mechanical keyboard sound.
 Type what you see, see what you type, and hear it on a real switch.
@@ -32,41 +33,101 @@ Type what you see, see what you type, and hear it on a real switch.
 - Test modes, languages, quotes, themes, and a smooth caret
 - Account system, themes, and persistence for your configuration
 
-# Keyboard sounds
+## Keyboard sounds
 
 The soundtrack selector sits directly under the typing area. Click a card to
 make that switch your active typing sound; the circular button previews it.
 
 Soundpacks are decoded lazily and cached, so only the pack you pick is loaded.
+Each pack lists its recording credit in
+`frontend/src/ts/sound/rustyvibes/catalog.ts`.
 
-# Development
+| Category  | Example switches                                  |
+| --------- | ------------------------------------------------- |
+| Linear    | Cherry MX Black/Red, Gateron Ink, Alpaca, Cream   |
+| Tactile   | Cherry MX Brown, Holy Panda, Everglide            |
+| Clicky    | Cherry MX Blue, Kailh Box Navy, Blue Alps, Buckling spring |
+
+Non-mechanical typing sounds (clicks, errors, and the classic Monkeytype
+effects) remain available through the regular sound settings.
+
+## Quick start
+
+Prerequisites: Node.js (see [`.nvmrc`](./.nvmrc)) and pnpm.
 
 ```bash
 pnpm install
-pnpm dev-fe
-pnpm lint-fe
-pnpm test-fe
-pnpm build-fe
+pnpm dev-fe   # frontend dev server
+pnpm dev-be   # backend dev server
 ```
 
-See [CONTRIBUTING.md](./docs/CONTRIBUTING.md) for the full workflow.
+Self-hosting (docker, databases, configuration) is covered in
+[docs/SELF_HOSTING.md](./docs/SELF_HOSTING.md). The full contributor workflow
+is in [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md).
 
-# Attribution
+## Development commands
 
-MechType is a fork of [Monkeytype](https://github.com/monkeytypegame/monkeytype)
-(GPL-3.0) with its product identity replaced and a mechanical keyboard
-soundtrack layer added.
+| Command                     | What it does                                  |
+| --------------------------- | --------------------------------------------- |
+| `pnpm dev-fe`               | Frontend dev server (Vite)                    |
+| `pnpm dev-be`               | Backend dev server                            |
+| `pnpm build`                | Build all workspaces                          |
+| `pnpm lint-fe`              | Lint frontend (oxlint, type-aware)            |
+| `pnpm lint-fix`             | Auto-fix lint issues                          |
+| `pnpm lint-styles`          | Lint CSS/SCSS (stylelint)                     |
+| `pnpm test-fe`              | Frontend tests (Vitest)                       |
+| `pnpm storybook`            | Component storybook                           |
+| `pnpm full-check`           | Lint, build, and test everything              |
 
-Sound assets and audio technology come from:
+Run a single test file with `pnpm vitest run path/to/test.ts`.
 
-- [rustyvibes](https://github.com/withoutname/rustyvibes) — RVW soundpack
-  format and switch sampling
-- [Mechvibes](https://github.com/hai-ngo/HelloMechvibes) — soundpacks
-- [kbsim](https://github.com/tluijkema/kbsim) — soundpacks
+## Project structure
 
-See [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md) for full license
-notices.
+```
+backend/                        API, auth, databases
+frontend/
+  src/ts/                       Typing test UI (SolidJS components + legacy TS)
+  src/ts/sound/rustyvibes/      Browser .rvw sound engine
+  static/sounds/rustyvibes/     21 switch soundpacks (.rvw)
+  scripts/                      Catalog generation and asset checks
+packages/                       Shared contracts and utilities
+docs/                           Contributor, quoting, theming, and ops docs
+docker/                         Self-hosting setup
+```
 
-# Security
+## Documentation
 
-To report a security vulnerability, please refer to [SECURITY.md](./docs/SECURITY.md).
+- [Contributing](./docs/CONTRIBUTING.md) — setup, workflow, code standards
+- [Self-hosting](./docs/SELF_HOSTING.md) — running your own instance
+- [Quotes](./docs/QUOTES.md), [Languages](./docs/LANGUAGES.md),
+  [Themes](./docs/THEMES.md), [Layouts](./docs/LAYOUTS.md),
+  [Fonts](./docs/FONTS.md) — adding content
+- [Code of conduct](./docs/CODE_OF_CONDUCT.md)
+
+## Security
+
+To report a security vulnerability, please refer to
+[docs/SECURITY.md](./docs/SECURITY.md).
+
+## License and attribution
+
+MechType is free software distributed under the
+[GNU General Public License v3.0](./LICENSE) — see `LICENSE` for the full
+terms. It is a derivative work of
+[Monkeytype](https://github.com/monkeytypegame/monkeytype) (GPL-3.0), with
+MechType-original changes released under the same license.
+
+Because this project mixes more than one upstream licensing context, component
+level attribution is kept separately in
+[THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md), which documents:
+
+- **Monkeytype** — base application, GPL-3.0
+- **rustyvibes-v2** — browser `.rvw` sound engine, MIT
+  (`frontend/src/ts/sound/rustyvibes/LICENSE`)
+- **Mechvibes** and **kbsim** — soundpack recordings, MIT
+- **Font Awesome Free** — icons and webfonts, MIT / CC BY 4.0 / SIL OFL 1.1
+- which parts of the repository are MechType-original work
+
+Upstream license files are preserved in place next to the code they cover, and
+MechType-original work is distinguished from Monkeytype-derived code and
+Rustyvibes-derived audio code in the same document.
