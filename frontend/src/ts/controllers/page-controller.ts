@@ -81,6 +81,7 @@ const pages = {
       }, 250);
     },
   }),
+  about: solidPage("about"),
   account: solidPage("account", {
     loadingOptions: {
       loadingMode: () => {
