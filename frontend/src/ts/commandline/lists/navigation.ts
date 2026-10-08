@@ -4,6 +4,7 @@ import { toggleFullscreen } from "../../utils/misc";
 import { Command, withValidation } from "../types";
 import { remoteValidation } from "../../utils/remote-validation";
 import { UserNameWithoutFilterSchema } from "@monkeytype/schemas/users";
+import { envConfig } from "virtual:env-config";
 import Ape from "../../ape";
 
 const commands: Command[] = [
@@ -66,4 +67,7 @@ const commands: Command[] = [
   },
 ];
 
-export default commands;
+export default commands.filter((command) => {
+  if (envConfig.backendEnabled) return true;
+  return command.id !== "viewAccount" && command.id !== "searchProfile";
+});
