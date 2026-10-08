@@ -20,6 +20,7 @@
     "lint-fast-fe": "turbo run lint-fast --filter @monkeytype/frontend",
     "lint-fast-pkg": "turbo run lint-fast --filter=\"./packages/*\"",
     "build": "turbo run build",
+    "vercel-build": "for f in firebase-config firebase-config-live; do test -f frontend/src/ts/constants/$f.ts || cp frontend/src/ts/constants/firebase-config-example.ts frontend/src/ts/constants/$f.ts; done && RECAPTCHA_SITE_KEY=\"${RECAPTCHA_SITE_KEY:-6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI}\" pnpm build-fe",
     "build-be": "turbo run build --filter @monkeytype/backend",
     "build-fe": "turbo run build --filter @monkeytype/frontend",
     "build-pkg": "turbo run build --filter=\"./packages/*\"",

@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "installCommand": "export HUSKY=0 && npm install -g pnpm@11.21.0 && pnpm install --frozen-lockfile",
-  "buildCommand": "for f in firebase-config firebase-config-live; do test -f frontend/src/ts/constants/$f.ts || cp frontend/src/ts/constants/firebase-config-example.ts frontend/src/ts/constants/$f.ts; done && RECAPTCHA_SITE_KEY=\"${RECAPTCHA_SITE_KEY:-6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI}\" pnpm build-fe",
+  "buildCommand": "pnpm vercel-build",
   "outputDirectory": "frontend/dist",
   "cleanUrls": true,
   "trailingSlash": false,
