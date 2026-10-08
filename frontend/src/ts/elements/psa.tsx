@@ -3,6 +3,7 @@ import { IdSchema } from "@monkeytype/schemas/util";
 import { isSafeNumber } from "@monkeytype/util/numbers";
 import { tryCatch } from "@monkeytype/util/trycatch";
 import { format } from "date-fns/format";
+import { envConfig } from "virtual:env-config";
 import { z } from "zod";
 
 import Ape from "../ape";
@@ -146,6 +147,7 @@ async function getLatest(): Promise<PSA[] | null> {
 }
 
 export async function show(): Promise<void> {
+  if (!envConfig.backendEnabled) return;
   const latest = await getLatest();
   if (latest === null) return;
   if (latest.length === 0) {
