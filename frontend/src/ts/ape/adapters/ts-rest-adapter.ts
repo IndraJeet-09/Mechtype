@@ -28,6 +28,13 @@ function buildApi(timeout: number): (args: ApiFetcherArgs) => Promise<{
   headers: Headers;
 }> {
   return async (request: ApiFetcherArgs) => {
+    if (!envConfig.backendEnabled) {
+      return {
+        status: 404,
+        body: { message: "Backend is disabled" },
+        headers: new Headers(),
+      };
+    }
     try {
       const token = await getIdToken();
       if (token !== null) {
