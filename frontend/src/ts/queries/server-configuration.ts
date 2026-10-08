@@ -1,4 +1,5 @@
 import { queryOptions } from "@tanstack/solid-query";
+import { envConfig } from "virtual:env-config";
 import { baseKey } from "./utils/keys";
 import Ape from "../ape";
 
@@ -13,6 +14,7 @@ const staleTime = Infinity;
 export const getServerConfigurationQueryOptions = () =>
   queryOptions({
     queryKey: queryKeys.root(),
+    enabled: () => envConfig.backendEnabled,
     queryFn: async () => {
       const response = await Ape.configuration.get();
 
