@@ -1,5 +1,6 @@
 import * as PageController from "./page-controller";
 import * as PageTransition from "../legacy-states/page-transition";
+import { envConfig } from "virtual:env-config";
 import { isAuthAvailable } from "../firebase";
 import { isAuthenticated } from "../states/core";
 import { isFunboxActive } from "../test/funbox/list";
@@ -34,6 +35,7 @@ function getParams(match: {
 
 type Route = {
   path: string;
+  requiresBackend?: boolean;
   load: (
     params: Record<string, string>,
     navigateOptions: NavigateOptions,
@@ -63,8 +65,15 @@ const routes: Route[] = [
   },
   {
     path: "/leaderboards",
+    requiresBackend: true,
     load: async (_params, options) => {
       await PageController.change("leaderboards", options);
+    },
+  },
+  {
+    path: "/about",
+    load: async (_params, options) => {
+      await PageController.change("about", options);
     },
   },
   {
@@ -75,6 +84,7 @@ const routes: Route[] = [
   },
   {
     path: "/login",
+    requiresBackend: true,
     load: async (_params, options) => {
       if (!isAuthAvailable()) {
         await navigate("/", options);
@@ -89,6 +99,7 @@ const routes: Route[] = [
   },
   {
     path: "/account",
+    requiresBackend: true,
     load: async (_params, options) => {
       if (!isAuthAvailable()) {
         await navigate("/", options);
@@ -103,6 +114,7 @@ const routes: Route[] = [
   },
   {
     path: "/account-settings",
+    requiresBackend: true,
     load: async (_params, options) => {
       if (!isAuthAvailable()) {
         await navigate("/", options);
@@ -117,12 +129,14 @@ const routes: Route[] = [
   },
   {
     path: "/profile",
+    requiresBackend: true,
     load: async (_params, options) => {
       await PageController.change("profileSearch", options);
     },
   },
   {
     path: "/profile/:uidOrName",
+    requiresBackend: true,
     load: async (params, options) => {
       await PageController.change("profile", {
         ...options,
@@ -136,6 +150,7 @@ const routes: Route[] = [
   },
   {
     path: "/friends",
+    requiresBackend: true,
     load: async (_params, options) => {
       if (!isAuthAvailable()) {
         await navigate("/", options);
@@ -217,6 +232,11 @@ async function router(options = {} as NavigateOptions): Promise<void> {
         force: true,
       },
     );
+    return;
+  }
+
+  if (match.route.requiresBackend === true && !envConfig.backendEnabled) {
+    await navigate("/", options);
     return;
   }
 
