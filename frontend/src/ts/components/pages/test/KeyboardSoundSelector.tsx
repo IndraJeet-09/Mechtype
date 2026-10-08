@@ -102,7 +102,7 @@ export function KeyboardSoundSelector(): JSXElement {
       aria-labelledby="keyboardSoundTitle"
       data-ui-element="keyboardSoundSelector"
       class={cn(
-        "relative w-full overflow-hidden bg-sub-alt/40 transition-opacity duration-125",
+        "relative w-full overflow-hidden transition-opacity duration-125",
         getFocus() && "pointer-events-none opacity-0",
       )}
     >

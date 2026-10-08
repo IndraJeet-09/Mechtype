@@ -35,7 +35,7 @@ export function TestConfigBar(): JSXElement {
     <div
       class={cn(
         variables,
-        "group z-10 mx-auto mb-10 hidden w-max shrink-0 grid-cols-[1fr_auto_1fr] justify-center [font-size:var(--font-size)] md:grid",
+        "group z-10 mx-auto mb-20 hidden w-max shrink-0 grid-cols-[1fr_auto_1fr] justify-center [font-size:var(--font-size)] md:grid",
         "rounded-[var(--roundness)] border border-text/10 bg-bg/95 px-4 py-3 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] backdrop-blur-md transition-opacity duration-125",
         getFocus() || getResultVisible() ? "pointer-events-none opacity-0" : "",
       )}

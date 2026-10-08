@@ -68,12 +68,28 @@
   }
 
   #typingTest {
+    --typing-pad: clamp(20px, 2vw, 40px);
+    --typing-content: min(
+      100% - var(--padding-inline) * 2,
+      var(--content-max-width)
+    );
     position: relative;
-    width: 100%;
+    width: min(100%, calc(var(--typing-content) + var(--typing-pad) * 2));
     margin: 0 auto;
+    padding-inline: var(--typing-pad);
+    padding-top: clamp(72px, 11vh, 150px);
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
+  }
+
+  [data-ui-element="keyboardSoundSelector"] {
+    width: 100%;
+    max-width: 1550px;
+    margin-inline: auto;
+    margin-top: clamp(80px, 10vh, 130px);
+    padding-inline: clamp(20px, 2vw, 40px);
   }
 
   .ssWatermark {

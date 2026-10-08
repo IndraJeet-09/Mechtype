@@ -49,7 +49,7 @@
   // clip instead of hidden: hidden would make #app a scroll container and
   // break `position: sticky` descendants (they would stick to #app, not the viewport)
   overflow: clip;
-  row-gap: 3rem;
+  row-gap: 2.5rem;
   padding-top: 3rem;
   padding-bottom: 3rem;
   width: 100%;
@@ -57,8 +57,8 @@
 
 // from an amazing guide by Kevin Powell https://www.youtube.com/watch?v=c13gpBrnGEw
 .content-grid {
-  --padding-inline: 2rem;
-  --content-max-width: 1536px;
+  --padding-inline: clamp(24px, 5vw, 80px);
+  --content-max-width: 1550px;
 
   --breakout-size: calc(
     (calc(var(--content-max-width) + 12rem) - var(--content-max-width)) / 2
