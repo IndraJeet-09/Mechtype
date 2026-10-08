@@ -30,38 +30,21 @@ const cardClass =
   "card rounded-(--roundness) bg-sub-alt px-(--horizontal-padding)";
 const durationMs = 250;
 
-export function TestConfig(): JSXElement {
+export function TestConfigBar(): JSXElement {
   return (
-    <>
-      <div
-        class={cn(
-          variables,
-          "group sticky top-2 z-10 mb-8 hidden w-max grid-cols-[1fr_auto_1fr] justify-center place-self-center [font-size:var(--font-size)] md:grid",
-          "mx-auto rounded-[var(--roundness)] border border-text/10 bg-bg/95 px-4 py-3 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] backdrop-blur-md transition-opacity duration-125",
-          getFocus() || getResultVisible()
-            ? "pointer-events-none opacity-0"
-            : "",
-        )}
-        data-ui-element="testConfig"
-      >
-        <PuncAndNum />
-        <Mode />
-        <Mode2 />
-      </div>
-      <Button
-        class={cn(
-          "sticky top-2 z-10 mx-auto mb-8 flex w-max rounded-full border border-text/10 px-4 py-2 font-semibold text-sub shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] md:hidden",
-        )}
-        variant="button"
-        onClick={() => {
-          showModal("MobileTestConfig");
-        }}
-        text="test settings"
-        fa={{
-          icon: "fa-cog",
-        }}
-      />
-    </>
+    <div
+      class={cn(
+        variables,
+        "group z-10 mx-auto mb-10 hidden w-max shrink-0 grid-cols-[1fr_auto_1fr] justify-center [font-size:var(--font-size)] md:grid",
+        "rounded-[var(--roundness)] border border-text/10 bg-bg/95 px-4 py-3 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] backdrop-blur-md transition-opacity duration-125",
+        getFocus() || getResultVisible() ? "pointer-events-none opacity-0" : "",
+      )}
+      data-ui-element="testConfig"
+    >
+      <PuncAndNum />
+      <Mode />
+      <Mode2 />
+    </div>
   );
 }
 
