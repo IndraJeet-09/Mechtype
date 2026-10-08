@@ -14,6 +14,7 @@ function stubVirtualEnvConfig(): Plugin {
       if (loadId === resolved) {
         return `export const envConfig = ${JSON.stringify({
           isDevelopment: true,
+          backendEnabled: false,
           backendUrl: "http://localhost:5005",
           clientVersion: "storybook",
           recaptchaSiteKey: "",
