@@ -19,6 +19,7 @@ import {
 import { parseWithSchema as parseJsonWithSchema } from "@monkeytype/util/json";
 import { tryCatchSync } from "@monkeytype/util/trycatch";
 import { decompressFromURI } from "lz-ts";
+import { envConfig } from "virtual:env-config";
 import { z } from "zod";
 
 import Ape from "../ape";
@@ -352,6 +353,8 @@ authEvent.subscribe(async (event) => {
     loadCustomThemeFromUrl(search);
     loadTestSettingsFromUrl(search);
     void loadChallengeFromUrl(search);
-    void linkDiscord(hash);
+    if (envConfig.backendEnabled) {
+      void linkDiscord(hash);
+    }
   }
 });
