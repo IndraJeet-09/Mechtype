@@ -141,7 +141,7 @@ window.addEventListener("resize", () => {
 
 createEffect(() => {
   qsr("#app").setStyle({
-    paddingTop: `${getGlobalOffsetTop() + convertRemToPixels(2)}px`,
+    paddingTop: `${getGlobalOffsetTop() + convertRemToPixels(4)}px`,
   });
 });
 
