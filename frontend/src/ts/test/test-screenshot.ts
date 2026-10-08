@@ -1,4 +1,5 @@
 import { showLoaderBar, hideLoaderBar } from "../states/loader-bar";
+import { envConfig } from "virtual:env-config";
 import * as Replay from "./replay-ui";
 import {
   getActivePage,
@@ -28,7 +29,7 @@ function revert(): void {
   qs("#ad-result-wrapper")?.show();
   qs("#ad-result-small-wrapper")?.show();
   qs(".pageTest .ssWatermark")?.hide();
-  qs(".pageTest .ssWatermark")?.setText("monkeytype.com"); // Reset watermark text
+  qs(".pageTest .ssWatermark")?.setText("mechtype"); // Reset watermark text
   qs(".pageTest .buttons")?.show();
   qs("noscript")?.show();
   qs("#nocss")?.show();
@@ -36,7 +37,7 @@ function revert(): void {
   qs(".wordInputHighlight")?.show();
   qsa(".highlightContainer")?.show();
   if (revealReplay) qs("#resultReplay")?.show();
-  if (!isAuthenticated()) {
+  if (!isAuthenticated() && envConfig.backendEnabled) {
     qs(".pageTest .loginTip")?.show();
   }
   qs("html")?.setStyle({ scrollBehavior: "smooth" });
@@ -67,7 +68,7 @@ async function generateCanvas(): Promise<HTMLCanvasElement | null> {
   qs(".pageTest .ssWatermark")?.show();
 
   const snapshot = DB.getSnapshot();
-  const ssWatermark = [format(dateNow, "dd MMM yyyy HH:mm"), "monkeytype.com"];
+  const ssWatermark = [format(dateNow, "dd MMM yyyy HH:mm"), "mechtype"];
   if (snapshot?.name !== undefined) {
     const userText = `${snapshot?.name}${getHtmlByUserFlags(snapshot, {
       iconsOnly: true,
@@ -318,7 +319,7 @@ export async function download(): Promise<void> {
       return;
     }
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-    const filename = `monkeytype-result-${timestamp}.png`;
+    const filename = `mechtype-result-${timestamp}.png`;
 
     downloadFile({ data, filename });
 
