@@ -6,6 +6,7 @@ import {
   onCleanup,
   Show,
 } from "solid-js";
+import { envConfig } from "virtual:env-config";
 
 import { usePendingConnectionsQuery } from "../../../collections/connections";
 import { restartTestEvent } from "../../../events/test";
@@ -26,6 +27,7 @@ import { Anime } from "../../common/anime";
 import { AnimePresence } from "../../common/anime/AnimePresence";
 import { Button } from "../../common/Button";
 import { User } from "../../common/User";
+import { ThemeIndicator } from "../footer/ThemeIndicator";
 import { AccountMenu } from "./AccountMenu";
 import { AccountXpBar } from "./AccountXpBar";
 
@@ -97,99 +99,117 @@ export function Nav(): JSXElement {
         }}
         router-link
       />
+      <Button
+        variant="text"
+        fa={{
+          icon: "fa-info",
+          fixedWidth: true,
+        }}
+        class={buttonClass()}
+        href="/about"
+        dataset={{
+          "data-nav-item": "about",
+        }}
+        router-link
+      />
       <div class="grow"></div>
-      <AnimePresence exitBeforeEnter>
-        <Show
-          when={getSnapshot()}
-          fallback={
-            <Anime
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, duration: 125 }}
-              exit={{ opacity: 0, duration: 125 }}
-            >
-              <Show when={showLoginButton()}>
-                <Button
-                  variant="text"
-                  href="/login"
-                  dataset={{
-                    "data-nav-item": "login",
-                  }}
-                  fa={{
-                    icon: "fa-user",
-                    variant: "regular",
-                    fixedWidth: true,
-                  }}
-                  router-link
-                  class={buttonClass()}
-                />
-              </Show>
-            </Anime>
-          }
-        >
-          {(snap) => (
-            <Anime
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, duration: 125 }}
-              exit={{ opacity: 0, duration: 125 }}
-            >
-              <div
-                ref={accountMenuRef}
-                class={cn(
-                  "relative",
-                  !getFocus() &&
-                    "hover:**:data-[ui-element='accountMenu']:pointer-events-auto hover:**:data-[ui-element='accountMenu']:opacity-100",
-                  "has-focus-visible:**:data-[ui-element='accountMenu']:pointer-events-auto has-focus-visible:**:data-[ui-element='accountMenu']:opacity-100",
-                  getAccountMenuOpen() &&
-                    "**:data-[ui-element='accountMenu']:pointer-events-auto **:data-[ui-element='accountMenu']:opacity-100",
-                )}
-                // oxlint-disable-next-line react/no-unknown-property
-                on:click={(e: MouseEvent) => {
-                  if (isCoarse()) {
-                    if (e.target instanceof HTMLAnchorElement) {
-                      if (e.target.dataset["navItem"] === "account") {
-                        e.preventDefault();
-                        e.stopPropagation();
-                      }
-                      setAccountMenuOpen((prev) => !prev);
-                    }
-                  }
-                }}
+      <Show when={envConfig.backendEnabled} fallback={null}>
+        <AnimePresence exitBeforeEnter>
+          <Show
+            when={getSnapshot()}
+            fallback={
+              <Anime
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, duration: 125 }}
+                exit={{ opacity: 0, duration: 125 }}
               >
-                <Button
-                  variant="text"
+                <Show when={showLoginButton()}>
+                  <Button
+                    variant="text"
+                    href="/login"
+                    dataset={{
+                      "data-nav-item": "login",
+                    }}
+                    fa={{
+                      icon: "fa-user",
+                      variant: "regular",
+                      fixedWidth: true,
+                    }}
+                    router-link
+                    class={buttonClass()}
+                  />
+                </Show>
+              </Anime>
+            }
+          >
+            {(snap) => (
+              <Anime
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, duration: 125 }}
+                exit={{ opacity: 0, duration: 125 }}
+              >
+                <div
+                  ref={accountMenuRef}
                   class={cn(
-                    "h-full",
-                    "hover:**:data-[ui-element='userLevel']:bg-(--themable-button-hover-text)",
-                    { "opacity-(--nav-focus-opacity)": getFocus() },
+                    "relative",
+                    !getFocus() &&
+                      "hover:**:data-[ui-element='accountMenu']:pointer-events-auto hover:**:data-[ui-element='accountMenu']:opacity-100",
+                    "has-focus-visible:**:data-[ui-element='accountMenu']:pointer-events-auto has-focus-visible:**:data-[ui-element='accountMenu']:opacity-100",
+                    getAccountMenuOpen() &&
+                      "**:data-[ui-element='accountMenu']:pointer-events-auto **:data-[ui-element='accountMenu']:opacity-100",
                   )}
-                  href="/account"
-                  router-link
-                  dataset={{
-                    "data-nav-item": "account",
+                  // oxlint-disable-next-line react/no-unknown-property
+                  on:click={(e: MouseEvent) => {
+                    if (isCoarse()) {
+                      if (e.target instanceof HTMLAnchorElement) {
+                        if (e.target.dataset["navItem"] === "account") {
+                          e.preventDefault();
+                          e.stopPropagation();
+                        }
+                        setAccountMenuOpen((prev) => !prev);
+                      }
+                    }
                   }}
                 >
-                  <User
-                    user={snap()}
-                    showAvatar={true}
-                    iconsOnly={true}
-                    hideNameOnSmallScreens={true}
-                    level={getAnimatedLevel()}
-                    showSpinner={getAccountButtonSpinner()}
-                    showNotificationBubble={showFriendsNotificationBubble()}
-                    fontClass="text-em-xs"
+                  <Button
+                    variant="text"
+                    class={cn(
+                      "h-full",
+                      "hover:**:data-[ui-element='userLevel']:bg-(--themable-button-hover-text)",
+                      { "opacity-(--nav-focus-opacity)": getFocus() },
+                    )}
+                    href="/account"
+                    router-link
+                    dataset={{
+                      "data-nav-item": "account",
+                    }}
+                  >
+                    <User
+                      user={snap()}
+                      showAvatar={true}
+                      iconsOnly={true}
+                      hideNameOnSmallScreens={true}
+                      level={getAnimatedLevel()}
+                      showSpinner={getAccountButtonSpinner()}
+                      showNotificationBubble={showFriendsNotificationBubble()}
+                      fontClass="text-em-xs"
+                    />
+                  </Button>
+                  <AccountMenu
+                    showFriendsNotificationBubble={showFriendsNotificationBubble()}
                   />
-                </Button>
-                <AccountMenu
-                  showFriendsNotificationBubble={showFriendsNotificationBubble()}
-                />
-              </div>
-              <div class="relative">
-                <AccountXpBar />
-              </div>
-            </Anime>
-          )}
-        </Show>
-      </AnimePresence>
+                </div>
+                <div class="relative">
+                  <AccountXpBar />
+                </div>
+              </Anime>
+            )}
+          </Show>
+        </AnimePresence>
+      </Show>
+      <div classList={{ "opacity-(--nav-focus-opacity)": getFocus() }}>
+        <ThemeIndicator />
+      </div>
     </nav>
   );
 }
