@@ -16,7 +16,7 @@
     </div>
     <!-- <div id="div-gpt-ad-mkt-0" style="height: 100vh"></div> -->
     <div id="app" class="content-grid focus hidden">
-      <mount data-component="branding"></mount>
+      <mount data-component="header"></mount>
       <main class="full-width content-grid" style="height: 100%">
         <div id="ad-vertical-left-wrapper" class="ad advertisement ad-v focus">
           <div class="icon"><i class="fas fa-ad"></i></div>
@@ -31,6 +31,10 @@
           id="pageLoading"
         >
           <mount data-component="loadingpage" class="contents"></mount>
+        </div>
+
+        <div class="page pageAbout hidden full-width" id="pageAbout">
+          <mount data-component="aboutpage"></mount>
         </div>
 
         <div class="page pageSettings hidden" id="pageSettings">
