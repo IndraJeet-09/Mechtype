@@ -1,5 +1,6 @@
 //TODO: use Format
 import { Chart, type PluginChartOptions } from "chart.js";
+import { envConfig } from "virtual:env-config";
 
 import { Config } from "../config/store";
 import { setConfig } from "../config/setters";
@@ -968,7 +969,7 @@ export async function update(
   qs("#words")?.removeClass("blurred");
   blurInputElement();
   qs("#result .stats .time .bottom .afk")?.setText("");
-  if (isAuthenticated()) {
+  if (isAuthenticated() || !envConfig.backendEnabled) {
     qs("#result .loginTip")?.hide();
   } else {
     qs("#result .loginTip")?.show();
@@ -1043,7 +1044,11 @@ export async function update(
     qsa("main #result .stats")?.show();
     qs("main #result .chart")?.show();
     if (!isAuthenticated()) {
-      qs("main #result .loginTip")?.show();
+      if (envConfig.backendEnabled) {
+        qs("main #result .loginTip")?.show();
+      } else {
+        qs("main #result .loginTip")?.hide();
+      }
       qs("main #result #rateQuoteButton")?.hide();
       qs("main #result #reportQuoteButton")?.hide();
     } else {

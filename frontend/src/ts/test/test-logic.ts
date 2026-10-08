@@ -1,4 +1,5 @@
 import Ape from "../ape";
+import { envConfig } from "virtual:env-config";
 import * as TestUI from "./test-ui";
 import * as Strings from "../utils/strings";
 import * as Misc from "../utils/misc";
@@ -1065,7 +1066,7 @@ export async function finish(difficultyFailed = false): Promise<void> {
   } else {
     // logged out
     void AnalyticsController.log("testCompletedNoLogin");
-    if (!dontSave) {
+    if (!dontSave && envConfig.backendEnabled) {
       // if its valid save it for later
       setLastSignedOutResult(completedEvent);
     }
@@ -1090,6 +1091,9 @@ async function saveResult(
   completedEvent: CompletedEvent,
   isRetrying: boolean,
 ): Promise<null | Awaited<ReturnType<typeof Ape.results.add>>> {
+  if (!envConfig.backendEnabled) {
+    return null;
+  }
   if (!Config.resultSaving) {
     showErrorNotification("Result not saved: disabled by user", {
       durationMs: 3000,
