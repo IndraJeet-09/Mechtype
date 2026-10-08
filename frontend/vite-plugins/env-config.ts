@@ -24,6 +24,7 @@ export function envConfig(options: {
       if (id === resolvedVirtualModuleId) {
         const devConfig: EnvConfig = {
           isDevelopment: true,
+          backendEnabled: options.env["BACKEND_ENABLED"] === "true",
           backendUrl: fallback(
             options.env["BACKEND_URL"],
             "http://localhost:5005",
@@ -36,6 +37,7 @@ export function envConfig(options: {
 
         const prodConfig: EnvConfig = {
           isDevelopment: false,
+          backendEnabled: options.env["BACKEND_ENABLED"] === "true",
           backendUrl: fallback(
             options.env["BACKEND_URL"],
             "https://api.monkeytype.com",

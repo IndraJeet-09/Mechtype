@@ -1,5 +1,6 @@
 export type EnvConfig = {
   backendUrl: string;
+  backendEnabled: boolean;
   isDevelopment: boolean;
   clientVersion: string;
   recaptchaSiteKey: string;
