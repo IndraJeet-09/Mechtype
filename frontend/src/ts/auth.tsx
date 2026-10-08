@@ -18,6 +18,7 @@ import {
   User as UserType,
 } from "firebase/auth";
 import { createMemo } from "solid-js";
+import { envConfig } from "virtual:env-config";
 import { z, ZodString } from "zod";
 
 import Ape from "./ape";
@@ -225,24 +226,26 @@ export async function onAuthStateChanged(
 
   let userPromise: Promise<void> = Promise.resolve();
 
+  const activeUser = envConfig.backendEnabled ? user : null;
+
   if (authInitialisedAndConnected) {
-    console.debug(`auth state changed, user ${user ? "true" : "false"}`);
-    if (user) {
-      setUserId(user.uid);
-      userPromise = loadUser(user);
+    console.debug(`auth state changed, user ${activeUser ? "true" : "false"}`);
+    if (activeUser) {
+      setUserId(activeUser.uid);
+      userPromise = loadUser(activeUser);
     } else {
       setUserId(null);
       DB.setSnapshot(undefined);
     }
   }
 
-  if (!authInitialisedAndConnected || !user) {
+  if (!authInitialisedAndConnected || !activeUser) {
     void Sentry.clearUser();
   }
 
   authEvent.dispatch({
     type: "authStateChanged",
-    data: { isUserSignedIn: user !== null, loadPromise: userPromise },
+    data: { isUserSignedIn: activeUser !== null, loadPromise: userPromise },
   });
 }
 
