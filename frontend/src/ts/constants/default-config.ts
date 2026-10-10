@@ -68,7 +68,7 @@ const obj: Config = {
   capsLockWarning: true,
   playSoundOnError: "off",
   playSoundOnClick: "off",
-  soundVolume: 0.5,
+  soundVolume: 0.75,
   mechanicalKeyboardSound: "holy-panda",
   startGraphsAtZero: true,
   showOutOfFocusWarning: true,
