@@ -231,13 +231,15 @@ document.addEventListener("visibilitychange", () => {
 
 // browsers keep the AudioContext suspended until a user gesture; unlock on the
 // first interaction so the first keypress is not silent.
-document.addEventListener(
-  "pointerdown",
-  () => {
-    if (isActive()) getEngine().unlock();
-  },
-  { capture: true },
-);
+const unlockAudio = (): void => {
+  if (isActive()) getEngine().unlock();
+};
+document.addEventListener("pointerdown", unlockAudio, {
+  capture: true,
+  passive: true,
+});
+// capture-phase keydown ensures the context is running before any typing handler
+document.addEventListener("keydown", unlockAudio, { capture: true });
 
 configEvent.subscribe((event) => {
   switch (event.key) {

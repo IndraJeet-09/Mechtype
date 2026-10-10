@@ -171,7 +171,9 @@ describe("config.ts", () => {
           given: { showLiveAcc: true, timerStyle: "off" },
           expected: { liveAccStyle: "mini" },
         },
-        { given: { soundVolume: "0.5" }, expected: { soundVolume: 0.5 } },
+        { given: { soundVolume: "0.5" }, expected: { soundVolume: 0.75 } },
+        { given: { soundVolume: 0.3 }, expected: { soundVolume: 0.3 } },
+        { given: { soundVolume: 0.5 }, expected: { soundVolume: 0.75 } },
         { given: { funbox: "none" }, expected: { funbox: [] } },
         {
           given: { funbox: "58008#read_ahead" },

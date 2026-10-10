@@ -123,6 +123,12 @@ function replaceLegacyValues(
     configObj.soundVolume = parseFloat(configObj.soundVolume);
   }
 
+  // previous default was 0.5, which is too quiet for the mechanical keyboard
+  // soundpacks (volume² curve); bump untouched configs to the new default
+  if (configObj.soundVolume === 0.5) {
+    configObj.soundVolume = 0.75;
+  }
+
   if (typeof configObj.funbox === "string") {
     if (configObj.funbox === "none") {
       configObj.funbox = [];
